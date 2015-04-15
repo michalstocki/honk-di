@@ -43,7 +43,7 @@ class ConstantBinding extends Binding
   create: ->
     @value
 
-class Binder
+class inject.Binder
   constructor: ->
     @bindings = []
     @configure()
@@ -57,6 +57,3 @@ class Binder
   _bind: (binding) ->
     @bindings.push(binding)
     binding
-
-
-module.exports = Binder

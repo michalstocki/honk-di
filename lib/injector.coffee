@@ -1,12 +1,11 @@
-ClassMap = require './class_map'
 
 name = (injectable) ->
   if injectable.name? then injectable.name
   else "'#{injectable}'"
 
-class Injector
+class inject.Injector
   constructor: (@binders...) ->
-    @_singletons = new ClassMap()
+    @_singletons = new inject.lib.ClassMap()
     @_stack = []
 
   getInstance: (cls, args...) ->
@@ -51,5 +50,3 @@ class Injector
     for k, v of ptype
       if v? and v._requiresInjection_
         instance[k] = @getInstance(v.cls, v.args...)
-
-module.exports = Injector
